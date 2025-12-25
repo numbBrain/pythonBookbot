@@ -1,4 +1,4 @@
-from stats import get_num_words, get_num_chars
+from stats import get_num_words, get_num_chars, sort_dict
 
 def get_book_text(filepath):
 
@@ -8,8 +8,18 @@ def get_book_text(filepath):
 def main():
 
     content = get_book_text("./books/frankenstein.txt")
-    words = get_num_words(content)
-    print(get_num_chars(content))
+    num_of_words = get_num_words(content)
+    print(f"Found {num_of_words} total words")
+    char_dict = get_num_chars(content)
+    sorted_chars = sort_dict(char_dict)
+
+    for elem in sorted_chars:
+
+        if elem["char"].isalpha():
+
+            print(f"{elem["char"]}: {elem["num"]}")
+
+    
     
 
 main()
